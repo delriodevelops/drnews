@@ -19,7 +19,7 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
           const response=await res.response
           const articles= await response.docs;
           setNews(news.concat(articles))
-          setPage(page+12)
+          setPage(page+1)
           console.log(news)
           console.log(page)
           setLoading(false)
