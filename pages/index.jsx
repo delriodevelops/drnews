@@ -10,8 +10,8 @@ export default function Home() {
   const category=null;
   const [page,setPage]=useState(0);
   
-  const KEY = 'djQ8gPEHON5Pnk7jTNhTelR8M8Bg5Pmd'
   
+  const KEY = 'djQ8gPEHON5Pnk7jTNhTelR8M8Bg5Pmd'
   const API=`https://api.nytimes.com/svc/news/v3/content/nyt/all.json?limit=12&offset=${page}&api-key=${KEY}`;
   
 
