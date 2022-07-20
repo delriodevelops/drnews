@@ -1,19 +1,24 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css'
 import NewsSection from '../components/NewsSection';
 import Footer from '../components/Footer';
 
 export default function Home() {
+
+
+  const Art=`https://www.nytimes.com/2022/07/20/briefing/europe-heatwave-global-warming-climate.html&api-key=${KEY}`;
   
-  const category=null;
-  const [page,setPage]=useState(0);
-  
-  const KEY = 'djQ8gPEHON5Pnk7jTNhTelR8M8Bg5Pmd'
-  
-  const API=`https://api.nytimes.com/svc/news/v3/content/nyt/all.json?limit=12&offset=${page}&api-key=${KEY}`;
-  
+  function newArticles(API) {
+    fetch(API)
+    .then(res=>res.json())
+    .then(res=>console.log(res))
+  }
+
+  useEffect(()=>{
+    newArticles(API)
+  },[])
 
   return (
     <>
@@ -23,8 +28,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
       </Head>
-
-      <NewsSection API={API} setPage={setPage} page={page}/>
+      <main>
+        <h1>Main</h1>
+      </main>
       
       <Footer selected={'home'}/>
     </>

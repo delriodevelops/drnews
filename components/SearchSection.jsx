@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import NewItem from './NewItem'
+import SearchItem from './SearchItem'
 import {AiOutlineSearch} from 'react-icons/ai'
 import Spinner from './Spinner'
 
@@ -16,7 +16,8 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
         fetch(API)
         .then(res=>res.json())
         .then(async res=>{
-          const articles= await res.results;
+          const response=await res.response
+          const articles= await response.docs;
           setNews(news.concat(articles))
           setPage(page+12)
           console.log(news)
@@ -37,7 +38,7 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
                   ? <Spinner/>
                   : 
                   <>
-                  {news.length!==0 ? <><NewItem news={news}/><button onClick={newArticles}>Load More</button></>:<><p>No results for &quot;{q}&quot;</p> <span onClick={()=>{setQ('')}}>Search something different <AiOutlineSearch/></span></>}
+                  {news.length!==0 ? <><SearchItem news={news}/><button onClick={newArticles}>Load More</button></>:<><p>No results for &quot;{q}&quot;</p> <span onClick={()=>{setQ('')}}>Search something different <AiOutlineSearch/></span></>}
                   </>
                 }
                 

@@ -1,17 +1,18 @@
 import React from 'react'
 import{ ImEarth} from 'react-icons/im'
 
+const prefix ='https://static01.nyt.com/'
 
 const newItem = ({news}) => {
   
   return (
     <>
-        {!(news===0)&& news.map(({multimedia,title,description,author,content,url,source,publishedAt,abstract,thumbnail_standard})=>
-          <article key={url}>
-          {!!multimedia && <img  src={multimedia[2].url}/>}
+        {!(news===0)&& news.map(({multimedia,title,description,author,content,web_url,source,publishedAt,abstract,thumbnail_standard})=>
+          <article key={web_url}>
+          {!!multimedia && <img src={prefix+multimedia[0].url}/>}
           <h2>{title}</h2>
           {!!abstract && <p>{abstract}</p>}
-          <a href={url} target="_blank" rel="noopener noreferrer">See More <ImEarth/></a>
+          <a href={web_url} target="_blank" rel="noopener noreferrer">See More <ImEarth/></a>
           <small>{source.name} {publishedAt}</small>
         </article>
         )}

@@ -2,18 +2,25 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useState } from 'react';
 import styles from '../styles/Home.module.css'
-import NewsSection from '../components/NewsSection';
+import SearchSection from '../components/SearchSection';
 import Footer from '../components/Footer';
 import QForm from '../components/QForm';
+import {AiOutlineSearch} from 'react-icons/ai'
+
 
 export default function Search() {
   
   const category=null;
-  const [page,setPage]=useState(1);
+  const [page,setPage]=useState(0);
+
+
 
   const [q,setQ]=useState('')
+  console.log(q)
+
+  const KEY = 'djQ8gPEHON5Pnk7jTNhTelR8M8Bg5Pmd'
+  const API=`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${q}&page=${page}&sort=newest&api-key=${KEY}`
   
-  const API=`https://newsapi.org/v2/everything?q=${q}&language=en&sortBy=publishedAt&page=${page}&pageSize=10&apiKey=61403e63fb404f399b00c46d03231b62`
   return (
     <>
       <Head>
@@ -27,11 +34,32 @@ export default function Search() {
             ?
                 <QForm q={q} setQ={setQ}/>
             :
-                <NewsSection API={API} setPage={setPage} page={page} q={q} setQ={setQ}/>
+                <>
+                  <SearchSection API={API} setPage={setPage} page={page} q={q} setQ={setQ}/>
+                  <AiOutlineSearch onClick={()=>{setQ('')}} id='search-icon'/>
+                </>
         }
-                  
-      
+
+
       <Footer selected={'search'}/>
+
+      <style jsx global>
+        {`
+          #search-icon {
+            position:fixed;
+            background:#f00;
+            bottom:96px;
+            right:24px;
+            width:48px;
+            padding:6px;
+            border-radius:50%;
+            color:#fff;
+            background:rgba(255,255,255,.2);
+            backdrop-filter:blur(8px);
+            height:48px;
+          }
+        `}
+      </style>
     </>
   )
 }
