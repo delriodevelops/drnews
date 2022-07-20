@@ -10,8 +10,10 @@ export default function Home() {
   
   const [category,setCategory]=useState(null)
   const [page,setPage]=useState(1);
+
+  const KEY = 'djQ8gPEHON5Pnk7jTNhTelR8M8Bg5Pmd'
+  const API=`https://api.nytimes.com/svc/news/v3/content/nyt/${category}.json?limit=12&offset=${page}&api-key=${KEY}`;
   
-  const API=`https://newsapi.org/v2/top-headlines?country=us&page=${page}&pageSize=12${category!==null ? `&category=`+category:''}&apiKey=61403e63fb404f399b00c46d03231b62`
 
   return (
     <>

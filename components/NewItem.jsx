@@ -1,18 +1,21 @@
 import React from 'react'
 import{ ImEarth} from 'react-icons/im'
 
+const today = new Date().toLocaleDateString()
 
 const newItem = ({news}) => {
+  console.log(today)
   
   return (
     <>
-        {!(news===0)&& news.map(({multimedia,title,description,author,content,url,source,publishedAt,abstract,thumbnail_standard})=>
+        {!(news===0)&& news.map(({multimedia,title,byline,url,first_published_date,abstract,kicker})=>
           <article key={url}>
+          {!!kicker && <small className='kicker'>{kicker}</small>}
           {!!multimedia && <img  src={multimedia[2].url}/>}
           <h2>{title}</h2>
           {!!abstract && <p>{abstract}</p>}
           <a href={url} target="_blank" rel="noopener noreferrer">See More <ImEarth/></a>
-          <small>{source.name} {publishedAt}</small>
+          <small>{byline} {new Date(first_published_date).toLocaleDateString()!==today ? 'ON '+ new Date(first_published_date).toLocaleDateString() :'AT '+ new Date(first_published_date).toLocaleTimeString('en-US')}</small>
         </article>
         )}
         <style jsx>
@@ -38,7 +41,19 @@ const newItem = ({news}) => {
         }
         article p {
           margin-top:0px;
-
+        }
+        article small {
+          font-size:10px;
+        }
+        .kicker {
+          color:#000;
+          font-weight:700;
+          width:fit-content;
+          height:fit-content;
+          background:#f90;
+          padding:6px;
+          margin:6px;
+          font-size:12px;
         }
         img {
           width:374px;

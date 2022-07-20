@@ -7,14 +7,16 @@ const newItem = ({news}) => {
   
   return (
     <>
-        {!(news===0)&& news.map(({multimedia,title,description,author,content,web_url,source,publishedAt,abstract,thumbnail_standard})=>
-          <article key={web_url}>
-          {!!multimedia && <img src={prefix+multimedia[0].url}/>}
-          <h2>{title}</h2>
-          {!!abstract && <p>{abstract}</p>}
-          <a href={web_url} target="_blank" rel="noopener noreferrer">See More <ImEarth/></a>
-          <small>{source.name} {publishedAt}</small>
-        </article>
+        {!(news===0)&& news.map(({multimedia,web_url,source,publishedAt,abstract,headline})=>
+          { const imag = multimedia[0]
+            return(
+              <article key={web_url}>
+                {!!multimedia.url && <img src={prefix+imag.url}/>}
+                <h2>{headline.main}</h2>
+                {!!abstract && <p>{abstract}</p>}
+                <a href={web_url} target="_blank" rel="noopener noreferrer">See More <ImEarth/></a>
+                <small>{source.name} {publishedAt}</small>
+              </article>)}
         )}
         <style jsx>
             {` article {
