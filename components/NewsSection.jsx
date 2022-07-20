@@ -20,8 +20,8 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
           setNews(news.concat(articles))
           setPage(page+1)
           console.log(news)
+          console.log(res)
           setLoading(false)
-          console.log(loading)
         })
       }
 
