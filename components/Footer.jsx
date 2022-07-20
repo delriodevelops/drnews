@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import {AiOutlineHome,AiOutlineSearch,AiOutlineBars} from 'react-icons/ai'
 
@@ -5,9 +6,9 @@ const Footer = ({selected}) => {
   return (
     <>
         <footer>
-            <a href="/"><AiOutlineHome id='home'/></a>
-            <a href="search"><AiOutlineSearch id='search'/></a>
-            <a href="category"><AiOutlineBars id="cat"/></a>
+            <Link href="/"><AiOutlineHome id='home'/></Link>
+            <Link href="search"><AiOutlineSearch id='search'/></Link>
+            <Link href="category"><AiOutlineBars id="cat"/></Link>
         </footer>
         <style jsx global>
             {`
@@ -24,13 +25,13 @@ const Footer = ({selected}) => {
                     padding:8px;
                 }
 
-                footer a svg {
+                footer svg {
                     width:48px;
                     height:48px;
                     padding:8px;
                     border-radius:50%;
                 }
-                footer a svg path {
+                footer svg path {
                     color:#ff9900;
                 }
                 #${selected} {

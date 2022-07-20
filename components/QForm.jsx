@@ -13,7 +13,7 @@ const QForm = ({q,setQ}) => {
           <input type="text" autoFocus placeholder='Bitcoin, James Webb, Elon Musk...' id='search-ipt' value={searchValue} onChange={(e)=>{setSearchValue(e.target.value)}}/>
           <div>
             
-              <span type="submit">Search</span>
+              <span type="submit" onClick={handleSubmit}>Search</span>
           </div>
       </form>
       <style jsx>
@@ -35,6 +35,7 @@ const QForm = ({q,setQ}) => {
             background:rgba(255,255,255,1);
             border:none;
             padding-left:6px;
+            outline:none;
           }
           .qform div {
             display:grid;
