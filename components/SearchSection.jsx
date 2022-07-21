@@ -57,7 +57,6 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
         scroll-snap-align: start;
         min-height:100vh; 
         color:#fff;
-        width:100vw;
         font-family: 'Montserrat', sans-serif;
       }
       html,body,main{

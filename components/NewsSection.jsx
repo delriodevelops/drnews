@@ -8,6 +8,7 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
 
     
     const [loading,setLoading]=useState(true)
+    const [results,setResults]=useState(0)
 
     const [news,setNews]=useState([])
 
@@ -16,11 +17,12 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
         fetch(API)
         .then(res=>res.json())
         .then(async res=>{
+          setResults(res.num_results)
           const articles= await res.results;
           setNews(news.concat(articles))
           setPage(page+12)
-          console.log(news)
-          console.log(page)
+          //console.log(news)
+          //console.log(page)
           setLoading(false)
         })
       }
@@ -38,7 +40,7 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
                           <NewItem news={news}/>
                           {!!loading
                             ? <Spinner/>
-                            : <button onClick={newArticles}>Load More</button>
+                            : <>{news.length<results && <button onClick={newArticles}>Load More</button>}</>
                           }
                       </>
                   }

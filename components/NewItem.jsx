@@ -1,16 +1,16 @@
 import React from 'react'
 import{ ImEarth} from 'react-icons/im'
+import {AiOutlineBook} from 'react-icons/ai'
 
 const today = new Date().toLocaleDateString()
 
 const newItem = ({news}) => {
-  console.log(today)
   
   return (
     <>
         {!(news===0)&& news.map(({multimedia,title,byline,url,first_published_date,abstract,kicker})=>
           <article key={url}>
-          {!!kicker && <small className='kicker'>{kicker}</small>}
+          {!!kicker && <small className='kicker'><AiOutlineBook/>{kicker}</small>}
           {!!multimedia && <img  src={multimedia[2].url}/>}
           <h2>{title}</h2>
           {!!abstract && <p>{abstract}</p>}
@@ -23,6 +23,7 @@ const newItem = ({news}) => {
           article {
           height:100%;
           display:grid;
+          max-width:584px;
           padding:8px 0 24px;
           border-bottom:solid 1px rgba(255,255,255,.3);
           scroll-snap-align: center;
@@ -55,6 +56,10 @@ const newItem = ({news}) => {
           padding:6px;
           margin:6px;
           font-size:12px;
+          display:grid;
+          place-items:center;
+          grid-template-columns:max-content max-content;
+          gap:4px;
         }
         img {
           width:100%;

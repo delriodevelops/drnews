@@ -1,5 +1,6 @@
 import React from 'react'
 import{ ImEarth} from 'react-icons/im'
+import {AiOutlineBook} from 'react-icons/ai'
 
 const prefix ='https://static01.nyt.com/'
 
@@ -22,6 +23,7 @@ const newItem = ({news}) => {
             {` 
         article {
           height:100%;
+          max-width:584px;
           display:grid;
           padding:8px 0 24px;
           border-bottom:solid 1px rgba(255,255,255,.3);
