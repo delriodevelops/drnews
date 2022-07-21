@@ -19,7 +19,8 @@ const newItem = ({news}) => {
               </article>)}
         )}
         <style jsx>
-            {` article {
+            {` 
+        article {
           height:100%;
           display:grid;
           padding:8px 0 24px;
@@ -44,9 +45,9 @@ const newItem = ({news}) => {
 
         }
         img {
-          width:374px;
+          width:100%;
           
-          height:196px;
+          height:100%;
           
           border-radius:12px;
         }`}

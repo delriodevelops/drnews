@@ -34,14 +34,15 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
     <>
         <main>
             <section>
-                {!!loading 
-                  ? <Spinner/>
-                  : 
-                  <>
-                  {news.length!==0 ? <><SearchItem news={news}/><button onClick={newArticles}>Load More</button></>:<><p>No results for &quot;{q}&quot;</p> <span onClick={()=>{setQ('')}}>Search something different <AiOutlineSearch/></span></>}
-                  </>
-                }
-                
+            {!!news && 
+                      <>
+                          <SearchItem news={news}/>
+                          {!!loading
+                            ? <Spinner/>
+                            : <button onClick={newArticles}>Load More</button>
+                          }
+                      </>
+            }    
             </section>
         </main>
 
@@ -58,8 +59,6 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
         color:#fff;
         width:100vw;
         font-family: 'Montserrat', sans-serif;
-        background:#000;
-        
       }
       html,body,main{
         background:#000;
@@ -68,7 +67,7 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
         display:grid;
         place-items:center;
         scroll-behavior:smooth;
-        scroll-snap-type: y proximity;
+        scroll-snap-type: y mandatory;
       }
       h1{
         margin:0;
@@ -97,6 +96,7 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
           margin:24px;
           place-self:center;
           margin-bottom:72px;
+          cursor:pointer;
         }
 
         section span {
@@ -110,6 +110,20 @@ const NewsSection = ({API,setPage,page,q,setQ}) => {
         }
         
 
+        .angel {
+            display:grid;
+            place-items:center;
+            width:100vw;
+            overflow:hidden;
+            background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+                    
+        main {
+          width:clamp(300px,100vw,600px);
+        }
+        html {
+          overflow-x:hidden;
+        }
         
 
       `}

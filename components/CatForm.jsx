@@ -215,12 +215,12 @@ const CatForm = ({category,setCategory}) => {
       
   return (
     <>
-        <div className='catform'>
+        <main className='catform'>
             <input type="text" autoFocus value={inputValue}  placeholder='Category' onChange={handleTyping}/>
             {categories.map(({display_name,section})=>
                 <>{(section || display_name).includes(inputValue) && <p key={section} onClick={()=>{setCategory(section)}}>{display_name}</p>}</>  
             )}
-        </div>
+        </main>
 
         <style jsx>
             {`
@@ -242,6 +242,10 @@ const CatForm = ({category,setCategory}) => {
                     border:none;
                     padding-left:6px;
                     outline:none;
+                }
+                .catform p {
+                cursor:pointer;
+
                 }
             `}
         </style>

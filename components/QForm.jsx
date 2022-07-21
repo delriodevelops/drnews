@@ -12,11 +12,10 @@ const QForm = ({q,setQ}) => {
       <form className='qform' onSubmit={handleSubmit}>
           <input type="text" autoFocus placeholder='Bitcoin, James Webb, Elon Musk...' id='search-ipt' value={searchValue} onChange={(e)=>{setSearchValue(e.target.value)}}/>
           <div>
-            
               <span type="submit" onClick={handleSubmit}>Search</span>
           </div>
       </form>
-      <style jsx>
+      <style jsx global>
         {`
           .qform {
             padding-top:60px;
@@ -49,6 +48,7 @@ const QForm = ({q,setQ}) => {
             width:fit-content;
             border-radius:24px;
             padding:12px 32px;
+            cursor:pointer;
           }
           
         `}

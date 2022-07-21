@@ -18,13 +18,14 @@ const newItem = ({news}) => {
           <small>{byline} {new Date(first_published_date).toLocaleDateString()!==today ? 'ON '+ new Date(first_published_date).toLocaleDateString() :'AT '+ new Date(first_published_date).toLocaleTimeString('en-US')}</small>
         </article>
         )}
-        <style jsx>
-            {` article {
+        <style jsx global>
+          {`
+          article {
           height:100%;
           display:grid;
           padding:8px 0 24px;
           border-bottom:solid 1px rgba(255,255,255,.3);
-          scroll-snap-align: start;
+          scroll-snap-align: center;
         }
         article a {
           color:auto;
@@ -56,12 +57,11 @@ const newItem = ({news}) => {
           font-size:12px;
         }
         img {
-          width:374px;
-          
-          height:196px;
+          width:100%;
           
           border-radius:12px;
-        }`}
+        }
+          `}
         </style>
     </>
   )

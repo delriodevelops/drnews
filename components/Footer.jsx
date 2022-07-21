@@ -14,7 +14,7 @@ const Footer = ({selected}) => {
             {`
                 footer {
                     position:fixed;
-                    width:100%;
+                    width:clamp(300px,100vw,600px);
                     bottom:0;
                     color:#fff;
                     background:rgba(0,0,0,.7);
@@ -30,14 +30,40 @@ const Footer = ({selected}) => {
                     height:48px;
                     padding:8px;
                     border-radius:50%;
+                    cursor:pointer;
                 }
+                footer svg:hover {
+                    background:#ff99002f;
+                    transition: all .3s ease;
+                }
+                footer svg:hover > path {
+                    transition: all .3s ease;
+                    color:#c90;
+                }
+
                 footer svg path {
                     color:#ff9900;
                 }
                 #${selected} {
-                    background:#ff990033;
+                    background:#ff99006f;
                 }
-                
+
+                .angel {
+                    display:grid;
+                    place-items:center;
+                    width:100vw;
+                    overflow:hidden;
+
+
+                    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                }
+                            
+                main {
+                  width:clamp(300px,100vw,600px);
+                }
+                html {
+                  overflow-x:hidden;
+                }
             `}
         </style>
     </>
